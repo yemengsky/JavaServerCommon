@@ -93,7 +93,7 @@ public class Result<T> implements Serializable {
         return this;
     }
 
-    public String genJSONString() {
+    public String genJSON() {
         return JSON.toJSONString(this);
     }
 }
