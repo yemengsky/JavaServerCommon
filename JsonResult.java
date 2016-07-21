@@ -58,10 +58,10 @@ public class JsonResult<T> implements Serializable {
     public JsonResult() {
     }
 
-    public JsonResult(T data, String message, int code) {
-        this.data = data;
-        this.message = message;
+    public JsonResult(int code, String message, T data) {
         this.code = code;
+        this.message = message;
+        this.data = data;
     }
 
     /**
