@@ -55,10 +55,10 @@ public class Result<T> implements Serializable {
         this.data = data;
     }
 
-    public JsonResult() {
+    public Result() {
     }
 
-    public JsonResult(int code, String message, T data) {
+    public Result(int code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
@@ -69,7 +69,7 @@ public class Result<T> implements Serializable {
      *
      * @param data 需要返回的数据
      */
-    public JsonResult(T data) {
+    public Result(T data) {
         this.code = RESULT_OK;
         this.data = data;
     }
@@ -77,7 +77,7 @@ public class Result<T> implements Serializable {
     /**
      * 操作失败
      */
-    public JsonResult<T> failure() {
+    public Result<T> failure() {
         this.code = RESULT_FAIL;
         return this;
     }
@@ -87,7 +87,7 @@ public class Result<T> implements Serializable {
      *
      * @param message 提示信息
      */
-    public JsonResult<T> msg(String message) {
+    public Result<T> msg(String message) {
         code = RESULT_ERROR;
         this.message = message;
         return this;
