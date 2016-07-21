@@ -1,0 +1,99 @@
+
+import com.alibaba.fastjson.JSON;
+
+import java.io.Serializable;
+
+/**
+ * Created by yemeng on 16/7/21.
+ */
+public class JsonResult<T> implements Serializable {
+    private static final long serialVersionUID = -4699713095477151086L;
+    //操作成功
+    public static final int RESULT_OK = 0;
+    //操作失败
+    public static final int RESULT_FAIL = 1;
+    //操作错误，提示,String型
+    public static final int RESULT_ERROR = 2;
+
+    /**
+     * 是否成功
+     */
+    private int code;
+
+    /**
+     * 信息,只有在code＝＝RESULT_ERROR才有
+     */
+    private String message;
+
+    /**
+     * 数据
+     */
+    private T data;
+
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public JsonResult() {
+    }
+
+    public JsonResult(T data, String message, int code) {
+        this.data = data;
+        this.message = message;
+        this.code = code;
+    }
+
+    /**
+     * 正常操作时返回数据
+     *
+     * @param data 需要返回的数据
+     */
+    public JsonResult(T data) {
+        this.data = data;
+        this.code = RESULT_OK;
+    }
+
+    /**
+     * 操作失败
+     */
+    public JsonResult<T> failure() {
+        this.code = RESULT_FAIL;
+        return this;
+    }
+
+    /**
+     * 操作异常，返回提示信息
+     *
+     * @param message 提示信息
+     */
+    public JsonResult<T> msg(String message) {
+        this.message = message;
+        code = RESULT_ERROR;
+        return this;
+    }
+
+    public String genJSONString() {
+        return JSON.toJSONString(this);
+    }
+}
