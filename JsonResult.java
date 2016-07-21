@@ -70,8 +70,8 @@ public class JsonResult<T> implements Serializable {
      * @param data 需要返回的数据
      */
     public JsonResult(T data) {
-        this.data = data;
         this.code = RESULT_OK;
+        this.data = data;
     }
 
     /**
@@ -88,8 +88,8 @@ public class JsonResult<T> implements Serializable {
      * @param message 提示信息
      */
     public JsonResult<T> msg(String message) {
-        this.message = message;
         code = RESULT_ERROR;
+        this.message = message;
         return this;
     }
 
