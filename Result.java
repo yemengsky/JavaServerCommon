@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * Created by yemeng on 16/7/21.
  */
-public class JsonResult<T> implements Serializable {
+public class Result<T> implements Serializable {
     private static final long serialVersionUID = -4699713095477151086L;
     //操作成功
     public static final int RESULT_OK = 0;
