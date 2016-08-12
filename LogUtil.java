@@ -10,7 +10,8 @@ public class LogUtil {
 
     private static String getString() {
         StackTraceElement ste = new Throwable().getStackTrace()[2];
-        String valueString = ste.getFileName().replace(".java", "") + " "
+        String valueString = DateUtil.TimestampToString(new Timestamp
+                (System.currentTimeMillis())) + ":" + ste.getFileName().replace(".java", "") + " "
                 + ste.getMethodName() + ":" + ste.getLineNumber() + " ";
         return valueString;
     }
