@@ -11,14 +11,25 @@ import java.util.Properties;
  * compile 'com.sun.mail:javax.mail:1.5.6'
  */
 public class EmailUtil {
+    /**
+     * 发送邮件
+     * @param fromMail  发送方Email地址，比如“yemengsky@163.com”
+     * @param user      用户名（一般同上），比如“yemengsky@163.com”
+     * @param password  密码（现在一般都用授权码，根据邮件提供商不同而不同）
+     * @param toMail    接收方Email地址，比如“yemengsky@gmail.com”
+     * @param smtpAddr  发送方stmp地址，比如“smtp.163.com”
+     * @param mailTitle 邮件主题
+     * @param mailContent 内容
+     * @throws Exception
+     */
     public static void sendMail(String fromMail, String user, String password,
-                                String toMail, String stmpAddr,
+                                String toMail, String smtpAddr,
                                 String mailTitle,
                                 String mailContent) throws Exception {
 
         Properties props = new Properties(); //可以加载一个配置文件
         // 使用smtp：简单邮件传输协议
-        props.put("mail.smtp.host", stmpAddr);//存储发送邮件服务器的信息
+        props.put("mail.smtp.host", smtpAddr);//存储发送邮件服务器的信息
         props.put("mail.smtp.auth", "true");//同时通过验证
 
         Session session = Session.getInstance(props);//根据属性新建一个邮件会话
