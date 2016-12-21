@@ -31,7 +31,8 @@ public class EmailUtil {
         // 使用smtp：简单邮件传输协议
         props.put("mail.smtp.host", smtpAddr);//存储发送邮件服务器的信息
         props.put("mail.smtp.auth", "true");//同时通过验证
-
+        props.put("mail.smtp.ssl.enable", "true");//（注意）163邮箱只能用ssl！！！
+        
         Session session = Session.getInstance(props);//根据属性新建一个邮件会话
         session.setDebug(true); //有他会打印一些调试信息。
 
